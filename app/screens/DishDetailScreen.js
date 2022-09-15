@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Button } from "react-native";
 import Icon from "../components/Icon";
 import { connect } from "react-redux";
 import { addToFavourites } from "../redux/actionCreators";
@@ -41,6 +41,11 @@ const DishDetailScreen = (props) => {
         {/* <Text style={styles.name}>{dish.name}</Text> */}
         <Text>{dish.description}</Text>
       </View>
+      <View style={styles.Container}>
+        <Text style={styles.price}>Price:</Text>
+        <Text>{dish.price}</Text>
+      </View>
+      <Button title="ADD TO CART" onPress={() => markFavourite(dish)} />
       <Text style={styles.cartText}>
         ADD TO CART{" "}
         <Icon
@@ -70,6 +75,15 @@ const styles = StyleSheet.create({
   },
   cartText: {
     fontSize: 20,
+    fontWeight: "800",
+  },
+  Container: {
+    alignItems: "center",
+    flexDirection: "row",
+    padding: 15,
+    justifyContent: "space-around",
+  },
+  price: {
     fontWeight: "800",
   },
 });
